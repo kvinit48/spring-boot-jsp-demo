@@ -13,43 +13,18 @@
   </parent>
 
   <groupId>com.example</groupId>
-  <artifactId>spring-boot-jsp-demo</artifactId>
+  <artifactId>simple-spring-app</artifactId>
   <version>1.0.0</version>
-  <name>spring-boot-jsp-demo</name>
-  <description>Demo Spring Boot with JSP</description>
+  <name>simple-spring-app</name>
 
   <properties>
     <java.version>17</java.version>
   </properties>
 
   <dependencies>
-    <!-- Web Starter (includes Tomcat) -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-
-    <!-- JSP Support -->
-    <dependency>
-      <groupId>org.apache.tomcat.embed</groupId>
-      <artifactId>tomcat-embed-jasper</artifactId>
-    </dependency>
-
-    <!-- JSTL for JSP -->
-    <dependency>
-      <groupId>jakarta.servlet.jsp.jstl</groupId>
-      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.glassfish.web</groupId>
-      <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-    </dependency>
-
-    <!-- Optional: for testing -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
-      <scope>test</scope>
     </dependency>
   </dependencies>
 
