@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
 
-    @GetMapping("/")
+    @GetMapping("/spring-boot-jsp-demo/")
     public String home(Model model) {
         model.addAttribute("message", "Hello from Spring Boot with JSP!");
         model.addAttribute("timestamp", java.time.LocalDateTime.now());
