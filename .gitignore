@@ -1,0 +1,25 @@
+# IntelliJ
+/.idea/
+*.iml
+*.iws
+*.ipr
+/out/
+
+# Maven
+/target/
+/log/
+
+# Mac
+.DS_Store
+
+# Environment
+.env
+*.env
+
+# Docker
+docker-compose.yml
+docker-compose.override.yml
+
+# Application
+application.properties
+application-dev.properties

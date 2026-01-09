@@ -1,0 +1,22 @@
+# Stage 1: Build
+FROM maven:3.8.7-eclipse-temurin-17 AS build
+WORKDIR /app
+COPY pom.xml .
+# Download dependencies (cached layer)
+RUN mvn dependency:go-offline -B
+COPY src ./src
+# Build the application
+RUN mvn clean package -DskipTests
+
+# Stage 2: Run
+FROM eclipse-temurin:17-jre-alpine
+WORKDIR /app
+# Copy JAR from build stage
+COPY --from=build /app/target/*.jar app.jar
+# Create non-root user
+RUN addgroup -S spring && adduser -S spring -G spring
+USER spring:spring
+# Expose port
+EXPOSE 8080
+# Run the application
+ENTRYPOINT ["java", "-jar", "app.jar"]
