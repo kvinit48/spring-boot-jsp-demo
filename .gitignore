@@ -20,6 +20,4 @@
 docker-compose.yml
 docker-compose.override.yml
 
-# Application
-application.properties
 application-dev.properties
