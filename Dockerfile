@@ -1,22 +1,15 @@
-# Use this Dockerfile - it will work!
-FROM maven:3.8.7-eclipse-temurin-17 AS build
+# Single stage with Tomcat (simpler)
+FROM tomcat:9.0-jre17
+
+# Remove default apps
+RUN rm -rf /usr/local/tomcat/webapps/*
+
+# Copy your WAR file (change packaging to war in pom.xml)
+COPY target/*.war /usr/local/tomcat/webapps/ROOT.war
+
+# Or if using JAR with embedded Tomcat
+FROM tomcat:9.0-jre17
 WORKDIR /app
-COPY pom.xml .
-COPY src ./src
-RUN mvn clean package -DskipTests
-
-# Use debian-based JRE (NOT alpine)
-FROM eclipse-temurin:17-jre
-
-WORKDIR /app
-COPY --from=build /app/target/*.jar app.jar
-
-# Optional: Add JSP compiler explicitly
-RUN apt-get update && apt-get install -y ecj && rm -rf /var/lib/apt/lists/*
-
-# Create non-root user
-RUN groupadd -r spring && useradd -r -g spring spring
-USER spring:spring
-
+COPY target/*.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "app.jar"]
